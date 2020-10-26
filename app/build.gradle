@@ -1,0 +1,28 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.3.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE' //umożliwia pominięcie wersji dla niektórych zależności. Zarządza, że jeżeli mam springa w wersji 2.3.3, to starter powinien też być w 2.3.3, albo innej odpowiedniej
+    id 'java'
+}
+group 'pl.edu.pjwstk.jaz'
+version '1.0-SNAPSHOT'
+repositories { //server ze strukturą katalogów, który przechowuje różne rozwiązania
+    mavenCentral()
+    maven {
+        url = "https://repo1.mycompany.org" //przyklad
+    }
+}
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web' //umożliwienie pisania aplikacji webowych
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa' //starter dla danych, dostęp do bazy danych
+    implementation 'org.liquibase:liquibase-core' //zarządza bazą danych, np jak tworzymy tabelkę, to w liquibase tworzymy sql'a, który tworzy tabelkę i jak np dodajemy pole w bazie danych, to w liquibase
+    implementation 'org.springframework.data:spring-data-commons' //dostęp do bazy
+    implementation 'org.postgresql:postgresql' //sterownik dostępu do bazy danych
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') { //starter do testow springowych
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation 'junit:junit:4.12'   //artefakt junit znajduje się gdzieś na serverze, ta linia to jego namiar na maven central
+    testImplementation 'org.assertj:assertj-core:3.11.1' //assercja
+    testImplementation 'org.testcontainers:postgresql:1.14.3' //baza danych tworzy sie na potrzeby testow
+    testImplementation 'io.rest-assured:rest-assured' //weryfikacja wysokopoziomowa
+}
