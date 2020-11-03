@@ -1,15 +1,15 @@
 plugins {
     id 'org.springframework.boot' version '2.3.3.RELEASE'
+    //id "org.springframework.boot" version "2.3.4.RELEASE"
     id 'io.spring.dependency-management' version '1.0.8.RELEASE' //umożliwia pominięcie wersji dla niektórych zależności. Zarządza, że jeżeli mam springa w wersji 2.3.3, to starter powinien też być w 2.3.3, albo innej odpowiedniej
     id 'java'
 }
+
+
 group 'pl.edu.pjwstk.jaz'
 version '1.0-SNAPSHOT'
 repositories { //server ze strukturą katalogów, który przechowuje różne rozwiązania
     mavenCentral()
-    maven {
-        url = "https://repo1.mycompany.org" //przyklad
-    }
 }
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web' //umożliwienie pisania aplikacji webowych
